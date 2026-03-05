@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "author": "Gabriel Lacerda Correia",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 6.6, "left": -314, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 62.44, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": 163.7,
+      "left": -233.1,
+      "rotate": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 80.75,
+      "left": -249.6,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 34.8,
+      "left": -274.6,
+      "attrs": { "color": "red" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:5V", "bb1:tp.25", "red", [ "h-28.65", "v-182.7" ] ],
+    [ "esp:CMD", "bb1:tn.25", "black", [ "h-38.25", "v-163.1" ] ],
+    [ "bb1:tp.14", "bb1:17b.f", "red", [ "v0" ] ],
+    [ "bb1:tp.11", "bb1:14b.f", "black", [ "v0" ] ],
+    [ "esp:27", "bb1:15b.i", "blue", [ "h0" ] ],
+    [ "esp:25", "bb1:16b.i", "orange", [ "v28.8", "h-211.05" ] ],
+    [ "esp:26", "bb1:11t.e", "red", [ "h0" ] ],
+    [ "ultrasonic1:VCC", "bb1:17b.j", "", [ "$bb" ] ],
+    [ "ultrasonic1:TRIG", "bb1:16b.j", "", [ "$bb" ] ],
+    [ "ultrasonic1:ECHO", "bb1:15b.j", "", [ "$bb" ] ],
+    [ "ultrasonic1:GND", "bb1:14b.j", "", [ "$bb" ] ],
+    [ "r1:1", "bb1:5t.d", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:11t.d", "", [ "$bb" ] ],
+    [ "led1:A", "bb1:5t.c", "", [ "$bb" ] ],
+    [ "led1:C", "bb1:4t.c", "", [ "$bb" ] ],
+    [ "bb1:tn.2", "bb1:4t.a", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
